@@ -27,11 +27,11 @@ int main()
         if (i < 5)
             cout << "Belt " << i + 1 << " => " << (1 & (car >> (15 - i))) << endl;
         if (i < 9 && i > 4)
-            cout << "Window " << i + 1 << " => " << (1 & (car >> (15 - i))) << endl;
+            cout << "Window " << i + 1 - 5 << " => " << (1 & (car >> (15 - i))) << endl;
         if (i < 13 && i > 8)
-            cout << "Door " << i + 1 << " => " << (1 & (car >> (15 - i))) << endl;
+            cout << "Door " << i + 1 - 9 << " => " << (1 & (car >> (15 - i))) << endl;
         if (i > 12)
-            cout << "Light " << i + 1 << " => " << (1 & (car >> (15 - i))) << endl;
+            cout << "Light " << i + 1 - 13 << " => " << (1 & (car >> (15 - i))) << endl;
     }
 
     return 0;
