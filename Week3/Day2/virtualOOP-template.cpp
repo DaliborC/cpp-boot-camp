@@ -2,6 +2,9 @@
 Dalibor Cuturic
 Assignments 1 Week 3 Day 2
 Template
+
+Write a function template which receives two of any shapes from last week’s assignment, compares them, and
+prints out the result.
 */
 #include <iostream>
 using namespace std;
@@ -14,13 +17,26 @@ bool isEqual(T1 t1, T2 t2)
     return ret;
 }
 
+template <typename T1, typename T2>
+bool isLess(T1 t1, T2 t2)
+{
+    bool ret;
+    ret = (t1.area() < t2.area() && t1.perimeter() < t2.perimeter());
+    return ret;
+}
+
+template <typename T1, typename T2>
+bool isGreater(T1 t1, T2 t2)
+{
+    bool ret;
+    ret = (t1.area() > t2.area() && t1.perimeter() > t2.perimeter());
+    return ret;
+}
+
 class Shape
 {
-    // protected:
 public:
     int width{0}, height{0};
-    // virtual int area() { return 0; }
-    // virtual int perimeter() { return 0; }
 
 public:
     Shape() {}
@@ -29,16 +45,6 @@ public:
         width = a;
         height = b;
     }
-
-    /*
-            // Overload operator ==
-            bool operator==(Shape &c)
-            {
-                bool ret;
-                ret = (area() == c.area() && perimeter() == c.perimeter());
-                return ret;
-            }
-    */
 };
 
 class Rectangle : public Shape
@@ -87,28 +93,79 @@ int main()
 
     // Test
     // Rectangle
-    cout << "Template test: " << (isEqual<>(r1, r1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(r1, r3) ? "True" : "False") << endl;
+    cout << "****************************" << endl;
+    cout << "Equal test: " << (isEqual<>(r1, r1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(r1, r3) ? "True" : "False") << endl;
     cout << endl;
     // Triangle
-    cout << "Template test: " << (isEqual<>(t1, t1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(t1, t3) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(t1, t1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(t1, t3) ? "True" : "False") << endl;
     cout << endl;
     // Square
-    cout << "Template test: " << (isEqual<>(s1, s1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(s1, s3) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(s1, s1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(s1, s3) ? "True" : "False") << endl;
     cout << endl;
     // Circle
-    cout << "Template test: " << (isEqual<>(c1, c1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(c1, c3) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(c1, c1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(c1, c3) ? "True" : "False") << endl;
     cout << endl;
     //  Mixed
-    cout << "Template test: " << (isEqual<>(r1, t1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(r1, s1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(r1, c1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(t1, s1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(t1, c1) ? "True" : "False") << endl;
-    cout << "Template test: " << (isEqual<>(s1, c1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(r1, t1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(r1, s1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(r1, c1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(t1, s1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(t1, c1) ? "True" : "False") << endl;
+    cout << "Equal test: " << (isEqual<>(s1, c1) ? "True" : "False") << endl;
+    // ************************************************************************
+    cout << "****************************" << endl;
+    // Rectangle
+    cout << "Less test: " << (isLess<>(r1, r1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(r1, r3) ? "True" : "False") << endl;
+    cout << endl;
+    // Triangle
+    cout << "Less test: " << (isLess<>(t1, t1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(t1, t3) ? "True" : "False") << endl;
+    cout << endl;
+    // Square
+    cout << "Less test: " << (isLess<>(s1, s1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(s1, s3) ? "True" : "False") << endl;
+    cout << endl;
+    // Circle
+    cout << "Less test: " << (isLess<>(c1, c1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(c1, c3) ? "True" : "False") << endl;
+    cout << endl;
+    //  Mixed
+    cout << "Less test: " << (isLess<>(r1, t1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(r1, s1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(r1, c1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(t1, s1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(t1, c1) ? "True" : "False") << endl;
+    cout << "Less test: " << (isLess<>(s1, c1) ? "True" : "False") << endl;
+    // ************************************************************************
+    cout << "****************************" << endl;
+    // Rectangle
+    cout << "Greater test: " << (isGreater<>(r1, r1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(r1, r3) ? "True" : "False") << endl;
+    cout << endl;
+    // Triangle
+    cout << "Greater test: " << (isGreater<>(t1, t1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(t1, t3) ? "True" : "False") << endl;
+    cout << endl;
+    // Square
+    cout << "Greater test: " << (isGreater<>(s1, s1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(s1, s3) ? "True" : "False") << endl;
+    cout << endl;
+    // Circle
+    cout << "Greater test: " << (isGreater<>(c1, c1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(c1, c3) ? "True" : "False") << endl;
+    cout << endl;
+    //  Mixed
+    cout << "Greater test: " << (isGreater<>(r1, t1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(r1, s1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(r1, c1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(t1, s1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(t1, c1) ? "True" : "False") << endl;
+    cout << "Greater test: " << (isGreater<>(s1, c1) ? "True" : "False") << endl;
 
     return 0;
 }
