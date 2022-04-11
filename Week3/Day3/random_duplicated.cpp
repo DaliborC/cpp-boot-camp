@@ -2,6 +2,9 @@
 Dalibor Cuturic
 Assignments 2 Week 3 Day 3
 random number and amount of duplicates
+
+Generate random numbers between 0-33, ten thousand times, then print how many duplicates of each number
+you have generated -- print in ascending order.
 */
 
 #include <iostream>
@@ -19,7 +22,8 @@ int main()
     for (int i = 0; i < size; ++i)
     {
         // Create random number
-        rand_nr = rand() % 33;
+        rand_nr = 1 + (rand() % (32 - 1 + 1)) ;
+        //rand_nr = rand() % 33+1;
         // Check if number allredy exist in the map
         if (my_map.find(rand_nr) != my_map.end())
         {
