@@ -28,7 +28,7 @@ void printArray(int a[SIZE])
     // std::cout << "printArray, a: "<< a[0] << " Size: " << SIZE <<  std::endl;
     for (size_t i = 0; i < SIZE; i++)
     {
-        std::cout << *a + i << std::endl;
+        std::cout << *(a + i) << std::endl;
     }
 }
 void printBool(bool _b)
