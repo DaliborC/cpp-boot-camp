@@ -1,0 +1,6 @@
+c++ -o Assignment2.cpp
+c++ -o Shape.cpp
+
+c++ -shared -fPIC -o libShape.so Shape.o
+
+c++ -o mainShared Assignment2.o ./libShape.so -lm
