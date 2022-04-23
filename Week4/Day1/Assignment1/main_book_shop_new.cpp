@@ -83,11 +83,23 @@ int main()
             cout << endl;
             // Search with title and author name first
             cout << "Title Name: " << endl;
-            cin >> search_title;
+            cin.clear();
+            cin.ignore();
+            getline(cin, search_title);
             cout << "Author Name: " << endl;
-            cin >> search_auth;
+            getline(cin, search_auth);
             cout << "Enter Number Of Books to buy: " << endl;
             cin >> search_stock;
+            while (!cin)
+            {
+                // user didn't input a number
+                cin.clear();
+                cin.ignore();
+                cout << "Input is not number! Try again!!" << endl;
+                cout << "Enter Number Of Books to buy: " << endl;
+                cin >> search_stock;
+            }
+
             for (int i = 0; i < book_index; ++i)
             {
                 // By if book exist and stock avaible
@@ -99,10 +111,11 @@ int main()
             // Search the book
             cout << endl;
             cout << "Title Name: " << endl;
-            cin >> search_title;
-            cout << "Author Name: " << endl;
+            cin.clear();
             cin.ignore();
-            cin >> search_auth;
+            getline(cin, search_title);
+            cout << "Author Name: " << endl;
+            getline(cin, search_auth);
             for (int i = 0; i < book_index; ++i)
             {
                 if (book[i]->search(search_title, search_auth))
@@ -120,10 +133,9 @@ int main()
             cout << endl;
             cout << "Title Name: " << endl;
             cin.ignore();
-            cin >> search_title;
+            getline(cin, search_title);
             cout << "Author Name: " << endl;
-            cin.ignore();
-            cin >> search_auth;
+            getline(cin, search_auth);
             for (int i = 0; i < book_index; ++i)
                 // If exist, edit
                 book[i]->edit(search_title, search_auth);
